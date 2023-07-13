@@ -29,7 +29,7 @@ pip install flask-mysqldb
 
 
 Database Setup
-This app uses MySQL for the database. You need to setup a MySQL server and create a database that will be used by the app.
+This app uses MySQL for the database. You need to setup a MySQL server and create a database that will be used by the app and name it photographers_DB (in case you name it something else change app.config['MYSQL_DB'] = 'photographers_DB' at app.py). Also define on the same field your password.
 
 
 After setting up the database, modify the config.py file with your database details.
