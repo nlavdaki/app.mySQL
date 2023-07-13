@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<ul>
+  <li><a href="/">Search Photographers</a></li>
+  <li><a href="/add">Add Photographer</a></li>
+</ul>
+<head>
+    <title>Photographers App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+    <h1>Photographers App</h1>
+
+    <!-- Search Form -->
+    <form id="search-form">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="surname" placeholder="Surname">
+        <input type="text" id="cv_keyword" placeholder="CV Keyword">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Table to display search results -->
+    <table id="photographers-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Birthday</th>
+                <th>Deathday</th>
+                <th>CV</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table rows will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <!-- Edit Form -->
+<form id="edit-form" style="display: none;">
+    <input type="hidden" id="edit-id">
+    <input type="text" id="edit-name" placeholder="Name">
+    <input type="text" id="edit-surname" placeholder="Surname">
+    <input type="text" id="edit-birthday" placeholder="Birthday">
+    <input type="text" id="edit-deathday" placeholder="Deathday">
+    <textarea id="edit-cv" placeholder="CV"></textarea>
+    <button id="submit-btn" type="submit">Submit</button>
+    <button id="cancel-btn" type="button">Cancel</button>
+</form>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>

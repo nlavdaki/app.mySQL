@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Photographer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Add Photographer</h1>
+
+    <form id="add-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Name">
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" placeholder="Surname">
+
+        <label for="birthday">Birthday:</label>
+        <input type="date" id="birthday" placeholder="Birthday">
+
+        <label for="deathday">Deathday:</label>
+        <input type="date" id="deathday" placeholder="Deathday">
+
+        <label for="cv">CV:</label>
+        <input type="text" id="cv" placeholder="CV">
+
+        <button type="submit">Add Photographer</button>
+    </form>
+    
+    <a href="/" class="return-btn">Return to Home Page</a>    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            // Add event listener to the add form
+            $('#add-form').submit(function(event) {
+                event.preventDefault();
+                var name = $('#name').val();
+                var surname = $('#surname').val();
+                var birthday = $('#birthday').val();
+                var deathday = $('#deathday').val();
+                var cv = $('#cv').val();
+
+                // Make an AJAX POST request to the backend API
+                $.ajax({
+                    url: '/api/photographers',
+                    method: 'POST',
+                    data: JSON.stringify({
+                        name: name,
+                        surname: surname,
+                        birthday: birthday,
+                        deathday: deathday,
+                        cv: cv
+                    }),
+                    contentType: 'application/json',
+                    success: function(data) {
+                        // Clear the form fields
+                        $('#name').val('');
+                        $('#surname').val('');
+                        $('#birthday').val('');
+                        $('#deathday').val('');
+                        $('#cv').val('');
+
+                        // Show a success message or redirect to the search page
+                        alert('Photographer added successfully!');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
